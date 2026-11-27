@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: mycinispot-auto-post-generator
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app --workers 1 --threads 4 --timeout 120
+    plan: free
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        value: "7429084091"
+      - key: TARGET_CHANNEL
+        value: "@My_Cine_Spots_1"
+      - key: SOURCE_GROUP_IDS
+        sync: false
+      - key: TMDB_API_KEY
+        sync: false
+      - key: OMDB_API_KEY
+        sync: false
